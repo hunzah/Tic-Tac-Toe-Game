@@ -74,10 +74,11 @@ header {
     text-align: center;
 }
 
-.x {
+.x, .statX {
     color: #481173;
 }
 
-.o {
+.o, .statO {
     color: #CB11AB;    
 }
+

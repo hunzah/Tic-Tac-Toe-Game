@@ -64,6 +64,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
         player = player == "x" ? "o" : "x";
         currentPlayer.innerHTML = player.toUpperCase();
+        currentPlayer.classList.remove("x", "o");
+        currentPlayer.classList.add(player);
     }
     
     

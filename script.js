@@ -89,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
         alert(text);
         for (let i = 0; i < cell.length; i++) {
             cell[i].innerHTML = '';
+            cell[i].classList.remove('x', 'o');
         }
         updateStat();
 

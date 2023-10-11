@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if(!this.innerHTML) {
             this.innerHTML = player;
+            this.classList.add(player);
         }else {
             alert("Ячейка занята");
             return;
@@ -90,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cell[i].innerHTML = '';
         }
         updateStat();
-        
+
         currentPlayer.textContent = 'X';
     }
 

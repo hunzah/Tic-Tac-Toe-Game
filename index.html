@@ -4,15 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tik tak toe</title>
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik+Gemstones&display=swap');
+      </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="content">
-
+    <header>
+        <h1>Tic Tac Toe</h1>
+        <h2>
+            <a class="link" href="https://www.wildberries.ru/">for Wildberries</a>
+         </h2>
+    </header>
+    <main class="content">
         <div class="currentPlayer">
             <span>Сейчас ходит: <span id="curPlyr">X</span></span>
         </div>
-
         <div id="area"></div>
 
         <div class="stat">
@@ -33,7 +40,7 @@
             </table>
         </div>
 
-        <script src="js/main.js"></script>
-    </div>
+        <script src="script.js"></script>
+    </main>
 </body>
 </html>

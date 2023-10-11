@@ -1,46 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tik tak toe</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Rubik+Gemstones&display=swap');
-      </style>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <h1>Tic Tac Toe</h1>
-        <h2>
-            <a class="link" href="https://www.wildberries.ru/">for Wildberries</a>
-         </h2>
-    </header>
-    <main class="content">
-        <div class="currentPlayer">
-            <span>Сейчас ходит: <span id="curPlyr" class="x">X</span></span>
-        </div>
-        <div id="area"></div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tik tak toe</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Rubik+Gemstones&display=swap');
+        </style>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header>
+            <h1>Tic Tac Toe</h1>
+            <h2>
+                <a class="link" href="https://www.wildberries.ru/">for Wildberries</a>
+            </h2>
+        </header>
+        <main class="content">
+            <div class="currentPlayer">
+                <span>Сейчас ходит: <span id="curPlyr" class="x">X</span></span>
+            </div>
+            <div id="area"></div>
 
-        <div class="stat">
-            <table>
-                <th colspan="2">Статистика</th>
-                <tr>
-                    <td class="statX">X</td>
-                    <td><span id="sX">0</span></td>
-                </tr>
-                <tr>
-                    <td class="statO">O</td>
-                    <td><span id="sO">0</span></td>
-                </tr>
-                <tr>
-                    <td>Ничьи</td>
-                    <td><span id="sD">0</span></td>
-                </tr>
-            </table>
-        </div>
-
-        <script src="script.js"></script>
-    </main>
-</body>
+            <div class="stat">
+                <table>
+                    <th colspan="2">Статистика</th>
+                    <tr>
+                        <td class="statX">X</td>
+                        <td><span id="sX">0</span></td>
+                    </tr>
+                    <tr>
+                        <td class="statO">O</td>
+                        <td><span id="sO">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Ничьи</td>
+                        <td><span id="sD">0</span></td>
+                    </tr>
+                </table>
+            </div>
+            <script src="script.js"></script>
+        </main>
+    </body>
 </html>

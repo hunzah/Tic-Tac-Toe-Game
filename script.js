@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const area = document.querySelector('#area');
     const currentPlayer = document.getElementById('curPlyr');
     let player = 'x';
@@ -21,86 +21,67 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     for (let i = 1; i < 10; i++) {
-        area.innerHTML += "<div class='cell' pos=" + i + "></div>";
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        cell.setAttribute('pos', i);
+        area.appendChild(cell);
     }
 
-    const cell = document.querySelectorAll('.cell');
-
-    for (let i = 0; i < cell.length; i++) {
-        cell[i].addEventListener('click', cellClick, false);
-    }
+    const cells = document.querySelectorAll('.cell');
 
     function cellClick() {
-
-        var data = [];
-        
-        if(!this.innerHTML) {
+        if (!this.innerHTML) {
             this.innerHTML = player;
             this.classList.add(player);
-        }else {
-            alert("Ячейка занята");
+        } else {
+            alert('Ячейка занята');
             return;
         }
-    
-        for(var i in cell){
-            if(cell[i].innerHTML == player){
-                data.push(parseInt(cell[i].getAttribute('pos')));
-            }
-        }
-    
-        if(checkWin(data)) {
+
+        const data = Array.from(cells)
+            .filter(cell => cell.innerHTML === player)
+            .map(cell => parseInt(cell.getAttribute('pos')));
+
+        if (checkWin(data)) {
             stat[player] += 1;
-            restart("Выграл: " + player);
-        }else {
-            var draw = true;
-            for(var i in cell) {
-                if(cell[i].innerHTML == '') draw = false;
-            }
-            if(draw) {
+            restart(`Выиграл: ${player}`);
+        } else {
+            const isDraw = Array.from(cells).every(cell => cell.innerHTML !== '');
+            if (isDraw) {
                 stat.d += 1;
-                restart("Ничья");
+                restart('Ничья');
             }
         }
-    
-        player = player == "x" ? "o" : "x";
+
+        player = player === 'x' ? 'o' : 'x';
         currentPlayer.innerHTML = player.toUpperCase();
-        currentPlayer.classList.remove("x", "o");
+        currentPlayer.classList.remove('x', 'o');
         currentPlayer.classList.add(player);
     }
-    
-    
+
+    cells.forEach(cell => {
+        cell.addEventListener('click', cellClick);
+    });
 
     function checkWin(data) {
-        for (let i in winIndex) {
-            let win = true;
-            for (let j in winIndex[i]) {
-                const id = winIndex[i][j];
-                const ind = data.indexOf(id);
-
-                if (ind === -1) {
-                    win = false;
-                }
-            }
-
-            if (win) return true;
-        }
-        return false;
+        return winIndex.some(indices =>
+            indices.every(index => data.includes(index))
+        );
     }
 
     function restart(text) {
         alert(text);
-        for (let i = 0; i < cell.length; i++) {
-            cell[i].innerHTML = '';
-            cell[i].classList.remove('x', 'o');
-        }
+        cells.forEach(cell => {
+            cell.innerHTML = '';
+            cell.classList.remove('x', 'o');
+        });
         updateStat();
-
         currentPlayer.textContent = 'X';
     }
 
     function updateStat() {
-        document.getElementById('sX').innerHTML = stat.x;
-        document.getElementById('sO').innerHTML = stat.o;
-        document.getElementById('sD').innerHTML = stat.d;
+        document.getElementById('sX').textContent = stat.x;
+        document.getElementById('sO').textContent = stat.o;
+        document.getElementById('sD').textContent = stat.d;
     }
 });
